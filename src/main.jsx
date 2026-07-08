@@ -22,6 +22,8 @@ import {
 } from 'lucide-react'
 import './styles.css'
 
+const imagePath = file => `${import.meta.env.BASE_URL}images/${file}`
+
 const profile = {
   name: 'Marcelo Esperândio Lúcio',
   title: 'Senior QA Engineer | SDET | Test Automation Engineer',
@@ -88,9 +90,9 @@ const content = {
       { title: 'Inglês', place: 'Leitura técnica', status: 'Em evolução para comunicação profissional' }
     ],
     projects: [
-      { title: 'Frameworks de Automação Escaláveis', description: 'Estruturação e manutenção de suites frontend, backend e mobile com foco em regressão confiável, evidências e execução contínua.', tags: ['Selenium', 'Playwright', 'RestAssured', 'Appium'], image: '/images/project-automation-frameworks-veltrix.webp' },
-      { title: 'Pipelines de Qualidade', description: 'Integração de automações em CI/CD com gates de qualidade, monitoramento de indicadores e feedback rápido para times ágeis.', tags: ['Jenkins', 'Azure DevOps', 'GitHub Actions', 'SonarQube'], image: '/images/project-quality-pipelines-veltrix.webp' },
-      { title: 'Qualidade em Sistemas Críticos', description: 'Atuação em produtos financeiros, telecom, mídia e tecnologia cobrindo APIs, contratos, ambientes cloud e observabilidade.', tags: ['AWS', 'Oracle', 'Salesforce', 'JMeter'], image: '/images/project-critical-systems-veltrix.webp' }
+      { title: 'Frameworks de Automação Escaláveis', description: 'Estruturação e manutenção de suites frontend, backend e mobile com foco em regressão confiável, evidências e execução contínua.', tags: ['Selenium', 'Playwright', 'RestAssured', 'Appium'], image: imagePath('project-automation-frameworks-veltrix.webp') },
+      { title: 'Pipelines de Qualidade', description: 'Integração de automações em CI/CD com gates de qualidade, monitoramento de indicadores e feedback rápido para times ágeis.', tags: ['Jenkins', 'Azure DevOps', 'GitHub Actions', 'SonarQube'], image: imagePath('project-quality-pipelines-veltrix.webp') },
+      { title: 'Qualidade em Sistemas Críticos', description: 'Atuação em produtos financeiros, telecom, mídia e tecnologia cobrindo APIs, contratos, ambientes cloud e observabilidade.', tags: ['AWS', 'Oracle', 'Salesforce', 'JMeter'], image: imagePath('project-critical-systems-veltrix.webp') }
     ],
     timeline: [
       ['2008 - 2012', 'Base em Testes', 'Testes funcionais, integrados, mobile e cenários regressivos na NET / Claro.'],
@@ -150,9 +152,9 @@ const content = {
       { title: 'English', place: 'Technical reading', status: 'Evolving toward professional communication' }
     ],
     projects: [
-      { title: 'Scalable Automation Frameworks', description: 'Design and maintenance of frontend, backend, and mobile suites focused on reliable regression, evidence, and continuous execution.', tags: ['Selenium', 'Playwright', 'RestAssured', 'Appium'], image: '/images/project-automation-frameworks-veltrix.webp' },
-      { title: 'Quality Pipelines', description: 'Integration of automation into CI/CD with quality gates, metrics monitoring, and fast feedback for agile teams.', tags: ['Jenkins', 'Azure DevOps', 'GitHub Actions', 'SonarQube'], image: '/images/project-quality-pipelines-veltrix.webp' },
-      { title: 'Quality for Critical Systems', description: 'Work across financial, telecom, media, and technology products covering APIs, contracts, cloud environments, and observability.', tags: ['AWS', 'Oracle', 'Salesforce', 'JMeter'], image: '/images/project-critical-systems-veltrix.webp' }
+      { title: 'Scalable Automation Frameworks', description: 'Design and maintenance of frontend, backend, and mobile suites focused on reliable regression, evidence, and continuous execution.', tags: ['Selenium', 'Playwright', 'RestAssured', 'Appium'], image: imagePath('project-automation-frameworks-veltrix.webp') },
+      { title: 'Quality Pipelines', description: 'Integration of automation into CI/CD with quality gates, metrics monitoring, and fast feedback for agile teams.', tags: ['Jenkins', 'Azure DevOps', 'GitHub Actions', 'SonarQube'], image: imagePath('project-quality-pipelines-veltrix.webp') },
+      { title: 'Quality for Critical Systems', description: 'Work across financial, telecom, media, and technology products covering APIs, contracts, cloud environments, and observability.', tags: ['AWS', 'Oracle', 'Salesforce', 'JMeter'], image: imagePath('project-critical-systems-veltrix.webp') }
     ],
     timeline: [
       ['2008 - 2012', 'Testing Foundation', 'Functional, integrated, mobile, and regression scenarios at NET / Claro.'],
@@ -275,19 +277,19 @@ const projects = [
     title: 'Frameworks de Automação Escaláveis',
     description: 'Estruturação e manutenção de suites frontend, backend e mobile com foco em regressão confiável, evidências e execução contínua.',
     tags: ['Selenium', 'Playwright', 'RestAssured', 'Appium'],
-    image: '/images/project-automation-frameworks-veltrix.webp'
+    image: imagePath('project-automation-frameworks-veltrix.webp')
   },
   {
     title: 'Pipelines de Qualidade',
     description: 'Integração de automações em CI/CD com gates de qualidade, monitoramento de indicadores e feedback rápido para times ágeis.',
     tags: ['Jenkins', 'Azure DevOps', 'GitHub Actions', 'SonarQube'],
-    image: '/images/project-quality-pipelines-veltrix.webp'
+    image: imagePath('project-quality-pipelines-veltrix.webp')
   },
   {
     title: 'Qualidade em Sistemas Críticos',
     description: 'Atuação em produtos financeiros, telecom, mídia e tecnologia cobrindo APIs, contratos, ambientes cloud e observabilidade.',
     tags: ['AWS', 'Oracle', 'Salesforce', 'JMeter'],
-    image: '/images/project-critical-systems-veltrix.webp'
+    image: imagePath('project-critical-systems-veltrix.webp')
   }
 ]
 
@@ -309,7 +311,7 @@ function App() {
     <main className={darkMode ? 'theme-dark' : 'theme-light'}>
       <aside className="sidebar">
         <div className="logo">
-          <img src="/images/veltrix-symbol.png" alt="Veltrix" />
+          <img src={imagePath('veltrix-symbol.png')} alt="Veltrix" />
         </div>
         <nav>
           {t.nav.map((item, index) => (
@@ -357,7 +359,7 @@ function App() {
           </div>
           <div className="profileCard">
             <div className="avatar">
-              <img src="/images/profile-marcelo.jpeg" alt={profile.name} />
+              <img src={imagePath('profile-marcelo.jpeg')} alt={profile.name} />
             </div>
             <strong>{t.profileTitle}</strong>
             <span>{t.profileSubtitle}</span>
