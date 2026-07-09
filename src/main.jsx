@@ -303,9 +303,15 @@ const timeline = [
 
 function App() {
   const [darkMode, setDarkMode] = useState(true)
-  const [language, setLanguage] = useState('PT')
-  const t = content[language]
-  const navTargets = ['home', 'sobre', 'projetos', 'tecnologias', 'experiencia', 'certificacoes', 'formacao', 'timeline', 'contato']
+  const t = content.PT
+  const navItems = [
+    { label: t.nav[0], target: 'home' },
+    { label: t.nav[1], target: 'sobre' },
+    { label: t.nav[2], target: 'projetos' },
+    { label: t.nav[3], target: 'tecnologias' },
+    { label: t.nav[5], target: 'certificacoes' },
+    { label: t.nav[8], target: 'contato' }
+  ]
 
   return (
     <main className={darkMode ? 'theme-dark' : 'theme-light'}>
@@ -314,8 +320,8 @@ function App() {
           <img src={imagePath('veltrix-symbol.png')} alt="Veltrix" />
         </div>
         <nav>
-          {t.nav.map((item, index) => (
-            <a key={item} href={`#${navTargets[index]}`}>{item}</a>
+          {navItems.map(item => (
+            <a key={item.target} href={`#${item.target}`}>{item.label}</a>
           ))}
         </nav>
         <div className="app-meta">
@@ -331,12 +337,6 @@ function App() {
               {darkMode ? <Moon size={18} /> : <Sun size={18} />}
               <span>{t.themeMode(darkMode)}</span>
             </button>
-            <div className="lang-selector">
-              <select value={language} onChange={(e) => setLanguage(e.target.value)} aria-label="Selecionar idioma">
-                <option value="PT">PT-BR</option>
-                <option value="EN">US-EN</option>
-              </select>
-            </div>
           </div>
         </header>
 
@@ -425,26 +425,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section" id="experiencia">
-          <h2>{t.experienceTitle}</h2>
-          <div className="experiences">
-            {t.experiences.map(exp => (
-              <article key={`${exp.company}-${exp.year}`} className="experience">
-                <div className="experience-head">
-                  <div>
-                    <div className="exp-title"><span>{exp.company}</span> - {exp.role}</div>
-                  </div>
-                  <div className="exp-meta">{exp.year} • {exp.location}</div>
-                </div>
-                <ul>
-                  {exp.highlights.map(item => <li key={item}>{item}</li>)}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="grid three" id="certificacoes">
+        <section className="grid two" id="certificacoes">
           <article className="card">
             <h2>{t.certificationsTitle}</h2>
             <div className="certs">
@@ -452,18 +433,6 @@ function App() {
                 <div key={cert.name} className="cert-item">
                   <strong>{cert.name}</strong>
                   <span>{cert.level}</span>
-                </div>
-              ))}
-            </div>
-          </article>
-
-          <article className="card" id="formacao">
-            <h2>{t.educationTitle}</h2>
-            <div className="articles">
-              {t.education.map(item => (
-                <div key={item.title} className="article-item">
-                  <p>{item.title}</p>
-                  <small>{item.place} • {item.status}</small>
                 </div>
               ))}
             </div>
@@ -480,18 +449,6 @@ function App() {
               <span className="location"><MapPin size={16}/> {profile.location}</span>
             </div>
           </article>
-        </section>
-
-        <section className="timeline-section" id="timeline">
-          <div className="timeline">
-            {t.timeline.map(([year, title, text]) => (
-              <article key={title}>
-                <span>{year}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
         </section>
       </section>
     </main>
